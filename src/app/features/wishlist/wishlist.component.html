@@ -1,0 +1,32 @@
+<section class="container-auto py-10">
+  <h1 class="text-emerald-500 text-center text-4xl font-bold mb-8">
+    My Favorite Products </h1>
+  <div *ngIf="wishlistProducts.length > 0; else emptyState"
+       class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+    <div *ngFor="let product of wishlistProducts"
+         class="bg-gradient-to-b from-white via-emerald-50 to-white shadow-xl rounded overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl w-full max-w-[260px]">
+      <div class="relative group overflow-hidden rounded">
+        <img [src]="product.imageCover" [alt]="product.title" 
+             class="w-full h-70 object-cover transition-transform duration-500 group-hover:scale-110">
+        <i class="fa fa-heart absolute top-3 right-3 text-2xl text-red-500 cursor-pointer hover:scale-125 transition-transform duration-300"></i>
+      </div>
+      <div class="p-5 text-center">
+        <h2 class="text-lg font-semibold text-gray-800 mb-2 truncate hover:text-emerald-600 transition-colors duration-300">
+          {{ product.title }}
+        </h2>
+        <p class="text-emerald-500 font-bold text-lg mb-4">
+          {{ product.price }} EGP
+        </p>
+        <button (click)="removeFromWishlist(product._id)"
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition-all duration-300 transform hover:-translate-y-1">
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #emptyState>
+    <p class="text-center text-gray-400 text-lg mt-10">
+      Your wishlist is empty 
+    </p>
+  </ng-template>
+</section>

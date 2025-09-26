@@ -1,0 +1,45 @@
+<section class="main-section">
+  <div class="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-xl mt-7 py-14">
+    <h1 class="text-emerald-500 text-center text-3xl font-bold mb-6"> Ready to Checkout? 🛒</h1>
+
+    <form [formGroup]="checkOutForm" (ngSubmit)="checkOut()">
+      
+      <div class="relative mb-5">
+        <input type="text" formControlName="details" id="details"
+               placeholder="Details"
+               class="w-full border border-gray-300 rounded-lg p-3 focus:border-emerald-500 focus:ring-emerald-300 focus:ring-1 transition" />
+        <label for="details" class="absolute left-3 top-0 text-gray-400 text-sm"></label>
+      </div>
+
+      <div class="relative mb-5">
+        <input type="tel" formControlName="phone" id="phone"
+               placeholder="Phone"
+               class="w-full border border-gray-300 rounded-lg p-3 focus:border-emerald-500 focus:ring-emerald-300 focus:ring-1 transition" />
+        <label for="phone" class="absolute left-3 top-0 text-gray-400 text-sm"></label>
+      </div>
+
+      <div class="relative mb-5">
+        <input list="cityList" formControlName="city" id="city"
+               placeholder="City"
+               class="w-full border border-gray-300 rounded-lg p-3 focus:border-emerald-500 focus:ring-emerald-300 focus:ring-1 transition" />
+        <label for="city" class="absolute left-3 top-0 text-gray-400 text-sm"></label>
+        <datalist id="cityList">
+          <option value="Cairo"></option>
+          <option value="Alex"></option>
+          <option value="Asiut"></option>
+          <option value="Giza"></option>
+          <option value="Matrouh"></option>
+        </datalist>
+      </div>
+
+      <div class="flex justify-center mt-6">
+        <button type="submit" [disabled]="checkOutForm.invalid"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-3 rounded-full shadow-md transition flex justify-center items-center gap-2">
+          Payment
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>

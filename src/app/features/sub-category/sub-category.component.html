@@ -1,0 +1,39 @@
+<section class="main-section">
+    <div class="container-auto">
+        <h1 class="text-emerald-500 text-center font-bold text-4xl mb-6 py-3">Featured Products</h1>
+          <div *ngIf="products.length; else emptyState">
+        <div class="grid gap-4 sm:grid-cols-2  md:grid-cols-3  lg:grid-cols-4 ">
+            @for( product of products ; track product._id ){
+            <div class="outter p-3">
+                <div class="product p-3 group">
+                    <div [routerLink]="['/p_details' , product._id]">
+                        <div>
+                            <img [src]="product.imageCover" class="w-full block rounded-md" [alt]="product.title">
+                        </div>
+                        <h1 class="text-emerald-400 py-2">{{product.category.name}} </h1>
+                        <h2 class="text-black font-medium py-1">{{product.title.split(' ' , 3).join(' ')}} </h2>
+                        <div class="flex justify-between items-center">
+                            <span>{{product.price}} EGP</span>
+                            <span><i class="fas fa-star text-yellow-500"></i>{{ product.ratingsAverage }}</span>
+                        </div>
+                        <i class="fa fa-heart cursor-pointer text-xl mt-2"
+                            [ngClass]="product.inWishlist ? 'text-red-600' : 'text-black'"
+                            (click)="toggleWishlist(product)">
+                        </i>
+                    </div>
+                    <button (click)="addToCart(product._id)"
+                        class="main-btn translate-y-[150%] group-hover:translate-y-0 duration-500">Add to Cart</button>
+                </div>
+            </div>
+
+            }
+        </div>
+        </div>
+    </div>
+     <ng-template #emptyState>
+    <div class="text-center mt-10 py-20">
+      <h1 class="text-emerald-400 text-5xl py-5 font-extralight">products</h1>
+         <p class="text-4xl font-light">currently unavailable</p>
+    </div>
+  </ng-template>
+</section>

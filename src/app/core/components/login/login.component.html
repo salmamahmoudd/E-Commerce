@@ -1,0 +1,73 @@
+<!-- <section class="main-section">
+    <div class="container-auto bg-gray-100 shadow-md shadow-gray-400 p-3 rounded-lg mx-auto my-14">
+        <h1 class="text-emerald-400 text-center py-2 font-bold text-4xl my-3">Login Now</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="relative mb-1">
+                <input formControlName="email" type="email" id="email"
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email</label>
+            </div>
+             <div class="relative mb-1">
+                <input formControlName="password" [type]=" flag ? 'password' : 'text' " id="password"
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
+                    <span (click)="flag = !flag" class="absolute inset-y-0 end-3 items-center flex cursor-pointer">
+                        @if(flag){
+                            <i class="fas fa-eye"></i>
+                        }
+                        @else {
+                          <i class="fas fa-eye-slash"></i>
+                        }
+                    </span>
+                    </div>
+            <button [disabled]="loginForm.invalid" class="main-btn">Login</button>
+            <div>
+                <a class="cursor-pointer text-emerald-500" routerLink="/forget password">Forget Password</a>
+            </div>
+        </form>
+    </div>
+</section> -->
+<section class="main-section flex items-center justify-center bg-gray-50">
+  <div class="w-full max-w-md bg-white shadow-lg shadow-gray-300 p-8 rounded-xl py-20">
+    <h1 class="text-emerald-500 text-center font-bold text-3xl mb-6">Login Now</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="space-y-5">
+      
+      <div class="relative">
+        <input formControlName="email" type="email" id="email"
+          class="peer block w-full rounded-lg border-2 border-gray-300 px-3 pt-5 pb-2 text-sm text-gray-600 placeholder-transparent focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none"
+          placeholder="Email" />
+        <label for="email"
+          class="absolute start-3 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm peer-focus:text-emerald-600">
+          Email
+        </label>
+      </div>
+
+      <div class="relative">
+        <input formControlName="password" [type]="flag ? 'password' : 'text'" id="password"
+          class="peer block w-full rounded-lg border-2 border-gray-300 px-3 pt-5 pb-2 text-sm text-gray-600 placeholder-transparent focus:border-emerald-500 focus:ring-emerald-500 focus:outline-none"
+          placeholder="Password" />
+        <label for="password"
+          class="absolute start-3 top-2 text-gray-500 text-sm transition-all peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-sm peer-focus:text-emerald-600">
+          Password
+        </label>
+        <span (click)="flag = !flag"
+          class="absolute inset-y-0 end-3 flex items-center text-gray-500 hover:text-emerald-500 cursor-pointer">
+          @if(flag){
+          <i class="fas fa-eye"></i>
+          }
+          @else {
+          <i class="fas fa-eye-slash"></i>
+          }
+        </span>
+      </div>
+            <button [disabled]="loginForm.invalid" class="main-btn">Login</button>
+            <div>
+                <a class="cursor-pointer text-emerald-500" routerLink="/forget password">Forget Password</a>
+            </div>
+        </form>
+    </div>
+</section>

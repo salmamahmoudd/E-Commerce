@@ -1,0 +1,30 @@
+<section class="main-section">
+  <div class="container mx-auto overflow-hidden">
+    <h1 class="text-emerald-500 text-center font-bold text-3xl mb-6 py-3">
+  Explore Our Categories
+</h1>
+
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 p-5">
+      @for(brand of allBrands; track brand._id){
+        <div class="category-card bg-white rounded shadow-sm cursor-pointer
+                   hover:shadow-md hover:scale-105 transition transform duration-300"
+             (click)="showSepBrands(brand._id)"                        
+             [routerLink]="['/brand-products', brand._id]">
+          
+          <div class="overflow-hidden h-60">
+            <img [src]="brand.image" [alt]="brand.slug" class="w-full object-cover">
+          </div>
+
+          <div class="text-center">
+            <h2 class="text-emerald-500 font-semibold text-lg">{{brand.name}}</h2>
+          </div>
+        </div>
+      }
+    </div>
+
+
+
+    </div>
+
+</section>

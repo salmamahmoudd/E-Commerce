@@ -1,0 +1,53 @@
+<section class="main-section py-6">
+  <div class="container-auto px-4 lg:px-12">
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+      <h1 class="text-emerald-500 font-extrabold text-4xl mb-6 text-center">🛒 Shop Cart</h1>
+
+      <div class="divide-y divide-gray-300">
+        @for(cartItem of cartData.products ; track cartItem.product._id){
+        <div class="flex flex-wrap items-center justify-between py-4">
+          
+          <div class="w-full md:w-1/6 flex justify-center mb-4 md:mb-0">
+            <img [src]="cartItem.product.imageCover"
+              class="w-28 h-28 object-cover rounded-lg shadow-sm border border-gray-300" alt="">
+          </div>
+
+          <div class="w-full md:w-2/4 px-4">
+            <h1 class="font-bold text-lg md:text-xl mb-1 text-gray-800"> {{cartItem.product.title}} </h1>
+            <h2 class="font-medium text-md mb-2 text-gray-600"> {{cartItem.price}} EGP </h2>
+            <h6 (click)="deleteProduct(cartItem.product._id)"
+              class="cursor-pointer text-md md:text-lg text-red-500 flex items-center gap-2 hover:text-red-600 duration-200">
+              <i class="fa fa-trash-can"></i><span>Remove</span>
+            </h6>
+          </div>
+
+          <div class="w-full md:w-1/6 flex justify-center md:justify-end">
+            <div class="flex items-center gap-4 text-emerald-600 font-bold text-xl">
+              <i (click)="changeCount(cartItem.product._id , cartItem.count + 1)"
+                class="fa fa-plus-circle cursor-pointer hover:scale-110 duration-200"></i>
+              <h3 class="text-gray-800"> {{cartItem.count}} </h3>
+              @if(cartItem.count > 1){
+              <i (click)="changeCount(cartItem.product._id , cartItem.count - 1)"
+                class="fa fa-minus-circle cursor-pointer hover:scale-110 duration-200"></i>
+              }
+            </div>
+          </div>
+
+        </div>
+        }
+      </div>
+
+      @if(cartData.products.length > 0){
+      <div class="flex flex-col md:flex-row justify-between items-center mt-8">
+        <h3 class="font-bold text-2xl text-gray-800 mb-4 md:mb-0">
+          Total: <span class="text-emerald-600">{{cartData.totalCartPrice}} EGP</span>
+        </h3>
+        <button [routerLink]="['/checkout' ,cartData._id]"
+          class="px-8 py-4 bg-emerald-500 text-white rounded-xl font-bold hover:bg-emerald-600 duration-200 shadow-lg">
+          ✅ Check out
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+</section>

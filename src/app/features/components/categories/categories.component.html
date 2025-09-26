@@ -1,0 +1,38 @@
+<section class="main-section">
+  <div class="container mx-auto overflow-hidden">
+    <h1 class="text-emerald-500 text-center font-bold text-3xl mb-6 py-3">
+  Explore Our Categories
+</h1>
+
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 p-5">
+      @for(category of allCategories; track category._id){
+        <div class="category-card bg-white rounded shadow-sm cursor-pointer
+                   hover:shadow-md hover:scale-105 transition transform duration-300"
+             (click)="showSubCategories(category._id)">
+          
+          <div class="overflow-hidden h-60">
+            <img [src]="category.image" [alt]="category.slug" class="w-full object-cover">
+          </div>
+
+          <div class="text-center">
+            <h2 class="text-emerald-500 font-semibold text-lg">{{category.name}}</h2>
+          </div>
+        </div>
+      }
+    </div>
+
+  
+
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5">
+        @for(s of selectedSubCategories; track s._id){
+          <div class="card bg-emerald-200 rounded shadow-sm p-4 flex items-center justify-center
+                      hover:shadow-md hover:text-emerald-500 transition duration-300"
+                       [routerLink]="['/subcategory', s._id]">
+            <h3 class="text-gray-700 font-medium text-base">{{s.name}}</h3>
+          </div>
+        }
+      </div>
+    </div>
+
+</section>

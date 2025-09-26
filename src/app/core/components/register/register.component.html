@@ -1,0 +1,100 @@
+<section class="main-section flex items-center justify-center bg-gray-50">
+  <div class="w-full max-w-md bg-white shadow-lg shadow-gray-300 p-8 rounded-xl py-20">
+        <h1 class="text-emerald-500 text-center font-bold text-3xl mb-6">Register Now</h1>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="relative mb-1">
+                <input [class]="{
+                    'my-valid' : !registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty    ) , 
+                    'my-invalid' : registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty    ),
+                }" formControlName="name" type="text" id=""
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Name</label>
+                @let nameControl = registerForm.get('name') ;
+                @if(nameControl?.errors && nameControl?.touched ){
+                <div class="bg-red-400 p-5 my-4 rounded-3xl font-bold">
+                    @if(nameControl?.getError('required')){<p class="text-2xl">Name is required</p>}
+                    @if(nameControl?.getError('minlength')){<p class="text-2xl">Name is short</p>}
+                    @if(nameControl?.getError('maxlength')){<p class="text-2xl">Name is long</p>}
+                </div>
+                }
+            </div>
+            <div class="relative mb-1">
+                <input formControlName="email" type="email" id=""
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email</label>
+                @let emailControl = registerForm.get('email') ;
+                @if(emailControl?.errors && emailControl?.touched ){
+                <div class="bg-red-400 p-5 my-4 rounded-3xl font-bold">
+                    @if(emailControl?.getError('required')){<p class="text-2xl">Email is required</p>}
+                    @if(emailControl?.getError('email')){<p class="text-2xl">Email is not valid</p>}
+                </div>
+                }
+            </div>
+            <div class="relative mb-1">
+                <input formControlName="password" [type]=" flag ? 'password' : 'text' " id="floating_filled"
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
+                    <span (click)="flag = !flag" class="absolute inset-y-0 end-3 items-center flex cursor-pointer">
+                        @if(flag){
+                            <i class="fas fa-eye"></i>
+                        }
+                        @else {
+                          <i class="fas fa-eye-slash"></i>
+                        }
+                    </span>
+                @let passwordControl = registerForm.get('password') ;
+                @if(passwordControl?.errors && passwordControl?.touched ){
+                <div class="bg-red-400 p-5 my-4 rounded-3xl font-bold">
+                    @if(passwordControl?.getError('required')){<p class="text-2xl">password is required</p>}
+                    @if(passwordControl?.getError('pattern')){<p class="text-2xl">password is not valid</p>}
+                </div>
+                }
+            </div>
+            <div class="relative mb-1">
+                <input formControlName="rePassword" type="password" id=""
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Confirm
+                    Password</label>
+                    <span (click)="flag = !flag" class="absolute inset-y-0 end-3 items-center flex cursor-pointer">
+                        @if(flag){
+                            <i class="fas fa-eye"></i>
+                        }
+                        @else {
+                          <i class="fas fa-eye-slash"></i>
+                        }
+                    </span>
+                @let rePasswordControl = registerForm.get('rePassword') ;
+                @if(registerForm?.errors && rePasswordControl?.touched ){
+                <div class="bg-red-400 p-5 my-4 rounded-3xl font-bold">
+                    @if(rePasswordControl?.getError('required')){<p class="text-2xl">repassword is required</p>}
+                    @if(rePasswordControl?.getError('pattern')){<p class="text-2xl">repassword is not valid</p>}
+                    @if(registerForm?.getError('missMatch')){<p class="text-2xl">repassword not the same</p>}
+                </div>
+                }
+            </div>
+            <div class="relative mb-1">
+                <input formControlName="phone" type="tel" id=""
+                    class="block rounded-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-500 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-emerald-500 peer"
+                    placeholder=" " />
+                <label for="floating_filled"
+                    class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] start-2.5 peer-focus:text-emerald-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone</label>
+                @let phoneControl = registerForm.get('phone') ;
+                @if(phoneControl?.errors && phoneControl?.touched ){
+                <div class="bg-red-400 p-5 my-4 rounded-3xl font-bold">
+                    @if(phoneControl?.getError('required')){<p class="text-2xl">phone is required</p>}
+                    @if(phoneControl?.getError('pattern')){<p class="text-2xl">phone is not valid</p>}
+                </div>
+                }
+            </div>
+            <button [disabled]="registerForm.invalid" class="main-btn">Sign UP <span><i class="fa fa-user-plus"></i></span></button>
+        </form>
+    </div>
+</section>

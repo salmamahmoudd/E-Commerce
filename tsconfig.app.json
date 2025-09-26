@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "docs/environment.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]
